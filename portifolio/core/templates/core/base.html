@@ -1,0 +1,74 @@
+<!doctype html>
+
+{% load static %}
+{% load bootstrap %}
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="description" content="Sistema de Gerenciamento"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> {% block titulo %} Cliente {% endblock %} </title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.js"></script>
+
+    <script>
+
+        $(document).ready(function() {
+            $("#success-alert").fadeTo(3000, 1000).slideUp(1000, function() {
+              $("#success-alert").slideUp(5000);
+            });
+        });
+
+        function confirma(pergunta) {
+            var agree=confirm(pergunta);
+            if (agree)
+                return true ;
+            else
+            return false ;
+        }
+
+        function upperCaseF(a){
+            setTimeout(function(){
+                a.value = a.value.toUpperCase();
+            }, 1);
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div id="content">
+        {% include 'core/messages.html' %}
+        {% block content %}       {% endblock %}
+    </div>
+
+    {% block footer %}
+    <footer id="footer" style="bottom: 10px;">
+        <div style="text-align: right;">
+            <span style="color: #cccccc">
+            Copyright © 2021 Sousa
+            </span>
+        </div>
+    </footer>
+    {% endblock %}
+
+</div>
+
+</body>
+
+</html>

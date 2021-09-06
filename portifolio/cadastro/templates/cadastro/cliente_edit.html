@@ -1,0 +1,78 @@
+{% extends "core/base.html" %}
+{% load bootstrap %}
+{% block content %}
+
+<form method="POST">
+
+    <h1>Cadastro de Cliente</h1>
+
+    {% csrf_token %}
+
+    <fieldset>
+
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary" title="Salvar">
+                <i class="fas fa-save"></i>Salvar
+            </button>
+            <button type="submit" value="btn_imprimir" name="btn_imprimir" class="btn btn-secondary">
+                <i class="fas fa-print"></i>Imprimir
+            </button>
+        </div>
+
+        <div class="row">
+
+            <div class="col-12 col-md-3">
+                {{ form.cpf_cnpj|default_if_none:""|bootstrap }}
+            </div>
+            <div class="col-12 col-md-6">
+                {{ form.nome|default_if_none:""|bootstrap }}
+            </div>
+            <div class="col-12 col-md-3">
+                {{ form.celular|default_if_none:""|bootstrap }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6">
+                {{ form.logradouro|default_if_none:""|bootstrap }}
+            </div>
+            <div class="col-12 col-md-4">
+                {{ form.bairro|default_if_none:""|bootstrap }}
+            </div>
+            <div class="col-12 col-md-2">
+                {{ form.numero|default_if_none:""|bootstrap }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-2">
+                {{ form.complemento|default_if_none:""|bootstrap }}
+            </div>
+            <div class="col-12 col-md-5">
+                {{ form.cidade|default_if_none:""|bootstrap }}
+            </div>
+            <div class="col-12 col-md-2">
+                {{ form.uf|default_if_none:"CE"|bootstrap }}
+            </div>
+            <div class="col-12 col-md-3">
+                {{ form.cep|default_if_none:""|bootstrap }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6">
+                {{ form.email|bootstrap }}
+            </div>
+            <div class="col-12 col-md-3">
+                {{ form.fone|default_if_none:""|bootstrap }}
+            </div>
+            <div class="col-12 col-md-3">
+                {{ form.contato|bootstrap }}
+            </div>
+        </div>
+
+    </fieldset>
+
+</form>
+
+{% endblock %}
